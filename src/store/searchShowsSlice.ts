@@ -49,3 +49,4 @@ export const {
 
 export const selectorShows = (state: RootState) => state.shows.shows;
 export const selectorSingleShow = (state: RootState) => state.shows.singleShow;
+export const selectorFetchLoading = (state: RootState) => state.shows.fetchLoading;
