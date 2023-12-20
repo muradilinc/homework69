@@ -8,7 +8,7 @@ const SingleShow = () => {
   const singleShow = useAppSelector(selectorSingleShow);
 
   if (!singleShow) {
-    return;
+    return null;
   }
 
   return (

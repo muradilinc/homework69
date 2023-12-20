@@ -14,14 +14,14 @@ const HomePage = () => {
         <Form/>
         <Autocomplete/>
       </div>
-      <div>
+      <>
         {
           fetchLoading ?
             <Spinner/>
             :
             <Outlet/>
         }
-      </div>
+      </>
     </>
   );
 };

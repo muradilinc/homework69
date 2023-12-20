@@ -4,7 +4,7 @@ import dynamicAxios from '../http/axiosApi';
 import {MAIN_URL, SINGLE_ITEM_URL} from '../constansts/contansts';
 
 export const fetchShows = createAsyncThunk<Show[], string>(
-  'shows/fetchShows',
+  'show/fetchShows',
   async (name) => {
     const response = await dynamicAxios(MAIN_URL).get<ShowResponse[]>(`?q=${name}`);
 
@@ -17,7 +17,7 @@ export const fetchShows = createAsyncThunk<Show[], string>(
 );
 
 export const fetchSingleShow = createAsyncThunk<Show, number>(
-  'shows/fetchSingleShow',
+  'show/fetchSingleShow',
   async (id) => {
     const response = await dynamicAxios(SINGLE_ITEM_URL).get(`/${id}`);
     return response.data;

@@ -10,11 +10,9 @@ const Form = () => {
     dispatch(fetchShows(name));
   }, [dispatch, name]);
 
-
   const changeName = (events: ChangeEvent<HTMLInputElement>) => {
     setName(events.target.value);
   };
-
 
   return (
     <form className="my-5">
