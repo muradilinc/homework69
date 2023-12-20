@@ -33,7 +33,7 @@ const SingleShow = () => {
       </div>
       <div className="mt-3">
         <h4 className="text-xl">Description:</h4>
-        {htmlViewer(singleShow.summary)}
+        {htmlViewer(singleShow.summary ? singleShow.summary : '<p>no description<p>')}
       </div>
     </div>
   );

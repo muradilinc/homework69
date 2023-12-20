@@ -1,7 +1,8 @@
 import {useAppDispatch, useAppSelector} from '../../redux/hooks';
-import {clearShows, selectorFetchLoading, selectorShows, selectShow} from '../../store/searchShowsSlice';
+import {clearShows, selectorFetchLoading, selectorShows} from '../../store/searchShowsSlice';
 import {useNavigate} from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
+import {fetchSingleShow} from '../../store/searchShowsThunk';
 
 const Autocomplete = () => {
   const isLoading = useAppSelector(selectorFetchLoading);
@@ -10,7 +11,7 @@ const Autocomplete = () => {
   const navigate = useNavigate();
 
   const onSelectShow = (id: number) => {
-    dispatch(selectShow(id));
+    dispatch(fetchSingleShow(id));
     navigate(`/shows/${id}`);
     dispatch(clearShows());
   };

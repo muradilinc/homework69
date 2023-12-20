@@ -1,8 +1,10 @@
 import axios from 'axios';
-import {MAIN_URL} from '../constansts/contansts';
 
-const axiosApi = axios.create({
-  baseURL: MAIN_URL,
-});
+const dynamicAxios = (dynamicUrl: string) => {
+  return axios.create({
+    baseURL: dynamicUrl,
+  });
+};
 
-export default axiosApi;
+
+export default dynamicAxios;

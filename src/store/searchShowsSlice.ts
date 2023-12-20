@@ -1,6 +1,6 @@
 import {Show} from '../types';
 import {createSlice} from '@reduxjs/toolkit';
-import {fetchShows} from './searchShowsThunk';
+import {fetchShows, fetchSingleShow} from './searchShowsThunk';
 import {RootState} from '../redux/store';
 
 interface SearchShowsState {
@@ -19,9 +19,6 @@ export const searchShowsSlice = createSlice({
   name: 'show',
   initialState,
   reducers: {
-    selectShow: (state, {payload: id}) => {
-      state.singleShow = state.shows.filter((item) => item.id === id)[0];
-    },
     clearShows: (state) => {
       state.shows = [];
     }
@@ -32,10 +29,19 @@ export const searchShowsSlice = createSlice({
     });
     builder.addCase(fetchShows.fulfilled, (state, {payload: shows}) => {
       state.fetchLoading = false;
-      console.log(shows);
       state.shows = shows;
     });
     builder.addCase(fetchShows.rejected, (state) => {
+      state.fetchLoading = false;
+    });
+    builder.addCase(fetchSingleShow.pending, (state) => {
+      state.fetchLoading = true;
+    });
+    builder.addCase(fetchSingleShow.fulfilled, (state, {payload: show}) => {
+      state.fetchLoading = false;
+      state.singleShow = show;
+    });
+    builder.addCase(fetchSingleShow.rejected, (state) => {
       state.fetchLoading = false;
     });
   },
@@ -43,7 +49,6 @@ export const searchShowsSlice = createSlice({
 
 export const searchShowsReducer = searchShowsSlice.reducer;
 export const {
-  selectShow,
   clearShows,
 } = searchShowsSlice.actions;
 
